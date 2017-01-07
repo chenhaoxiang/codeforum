@@ -1,0 +1,48 @@
+<c3p0-config>
+	<!-- 默认配置，如果没有指定则使用这个配置 -->
+	<default-config>
+		<property name="checkoutTimeout">30000</property>
+		<property name="idleConnectionTestPeriod">30</property>
+		<property name="initialPoolSize">10</property>
+		<property name="maxIdleTime">30</property>
+		<property name="maxPoolSize">100</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxStatements">200</property>
+		<user-overrides user="test-user">
+			<property name="maxPoolSize">10</property>
+			<property name="minPoolSize">1</property>
+			<property name="maxStatements">0</property>
+		</user-overrides>
+	</default-config> 
+	<!-- 命名的配置 -->
+	<named-config name="myOracle">
+		<property name="driverClass">oracle.jdbc.driver.OracleDriver</property>
+		<property name="jdbcUrl">
+			jdbc:oracle:thin:@127.0.0.1:1521:codeforum
+		</property>
+		<property name="user">system</property>
+		<property name="password">123456</property>
+		<property name="acquireIncrement">2</property><!-- 如果池中数据连接不够时一次增长多少个 -->
+		<property name="initialPoolSize">2</property>
+		<property name="minPoolSize">2</property>
+		<property name="maxPoolSize">10</property>
+		<property name="maxStatements">50</property>
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config>
+	
+	<!-- 命名的配置 -->
+	<named-config name="mySql">
+		<property name="driverClass">com.mysql.jdbc.Driver</property>
+		<property name="jdbcUrl">
+			<![CDATA[jdbc:mysql://127.0.0.1:3306/codeforum?useUnicode=true&characterEncoding=utf-8&useSSL=false]]>
+		</property>
+		<property name="user">root</property>
+		<property name="password">1234</property>
+		<property name="acquireIncrement">10</property><!-- 如果池中数据连接不够时一次增长多少个 -->
+		<property name="initialPoolSize">20</property>
+		<property name="minPoolSize">10</property>
+		<property name="maxPoolSize">100</property>
+		<property name="maxStatements">500</property>
+		<property name="maxStatementsPerConnection">5</property>
+	</named-config>
+</c3p0-config> 

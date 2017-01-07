@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name></display-name>
+
+	<!-- 统一网站编码的拦截器 -->
+	<filter>
+		<filter-name>char</filter-name>
+		<filter-class>cn.hncu.filter.CharFilter</filter-class>
+	</filter>
+	<!-- 验证用户是否登录的拦截器 -->
+	<filter>
+		<filter-name>UserLogin</filter-name>
+		<filter-class>cn.hncu.filter.UserLoginFilter</filter-class>
+		<init-param>
+			<param-name>loginPage</param-name>
+			<param-value>/jsps/user/log.jsp</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>char</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UserLogin</filter-name>
+		<!-- 拦截 -->
+		<url-pattern>/articleServlet</url-pattern>
+	</filter-mapping>
+
+	<!-- 用户的UserServlet -->
+	<servlet>
+		<servlet-name>user</servlet-name>
+		<servlet-class>cn.hncu.user.servlet.UserServlet</servlet-class>
+		<init-param>
+			<param-name>reg</param-name>
+			<param-value>/jsps/user/reg.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>regSuccess</param-name>
+			<param-value>/jsps/user/regsucc.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>index</param-name>
+			<param-value>index.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>article</param-name>
+			<!-- 重定向时前面不用加/ -->
+			<param-value>articleServlet</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet>
+		<servlet-name>IndexServlet</servlet-name>
+		<servlet-class>cn.hncu.index.servlet.IndexServlet</servlet-class>
+		<init-param>
+			<param-name>index</param-name>
+			<param-value>/in.jsp</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ArticleServlet</servlet-name>
+		<servlet-class>cn.hncu.article.servlet.ArticleServlet</servlet-class>
+		<init-param>
+			<param-name>article</param-name>
+			<param-value>/jsps/article/article.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>index</param-name>
+			<param-value>/index.jsp</param-value>
+		</init-param>
+
+	</servlet>
+
+	<!-- 用户发表文章的servlet -->
+	<servlet>
+		<servlet-name>PublishServlet</servlet-name>
+		<servlet-class>cn.hncu.publish.servlet.PublishServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>IndexServlet</servlet-name>
+		<url-pattern>/IndexServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>user</servlet-name>
+		<url-pattern>/user</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ArticleServlet</servlet-name>
+		<url-pattern>/articleServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PublishServlet</servlet-name>
+		<url-pattern>/publishServlet</url-pattern>
+	</servlet-mapping>
+
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

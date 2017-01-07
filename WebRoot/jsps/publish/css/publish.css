@@ -1,0 +1,19 @@
+body{
+	text-align: center;
+}
+/*去掉a标签下划线*/
+a{
+text-decoration:none;
+}
+#title{
+	width: 500px;
+	height: 20px;
+	max-width: 500px;
+	max-height: 20px;
+}
+#main{
+	width: 800px;
+	height: 300px;
+	max-width: 800px;
+	max-height: 300px;
+}

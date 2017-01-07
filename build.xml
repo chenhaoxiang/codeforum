@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="codeforum" basedir="." default="usage">
+	<property name="url" value="jdbc:mysql://127.0.0.1:3306/codeforum"></property>
+	<property name="driver" value="com.mysql.jdbc.Driver"></property>
+	<property name="user" value="root"></property>
+	<property name="pwd" value="1234"></property>
+	<target name="usage">
+		<echo>说明及用法信息!</echo>
+	</target>
+	<target name="create" description="创建以及初始化数据库">
+		<sql userid="${user}" password="${pwd}" url="${url}" driver="${driver}" encoding="UTF-8" delimiter=";">
+			<fileset dir="${basedir}/sql/create">
+				<include name="*.sql"/>
+			</fileset>
+			<classpath>
+				<fileset dir="${basedir}/WebRoot/WEB-INF/lib">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+		</sql>
+	</target>
+	<target name="init" description="初始化数据库">
+			<sql userid="${user}" password="${pwd}"  url="${url}" driver="${driver}" encoding="UTF-8" delimiter=";">
+				<fileset dir="${basedir}/sql/init">
+					<include name="*.sql"/>
+				</fileset>
+				<classpath>
+					<fileset dir="${basedir}/WebRoot/WEB-INF/lib">
+						<include name="*.jar"/>
+					</fileset>
+				</classpath>
+			</sql>
+		</target>
+</project>

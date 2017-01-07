@@ -1,0 +1,44 @@
+body{
+	text-align: center;
+}
+/*去掉a标签下划线*/
+a{
+text-decoration:none;
+}
+.divhot{
+	text-align: left;
+	position: relative;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.tiezi{
+	position: relative;
+	left: 0px;
+	top: 0px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.tiezi_p{
+	font-size: 15px;
+}
+
+.pc{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e1e2e3;
+    border-top-color: rgb(225, 226, 227);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgb(225, 226, 227);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgb(225, 226, 227);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgb(225, 226, 227);
+    border-left-style: solid;
+    border-left-width: 1px;
+}
+.now {
+    display: block;
+}
